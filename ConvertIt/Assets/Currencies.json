@@ -1,0 +1,302 @@
+[
+  {
+    "symbol" : "EGP",
+    "localizedDescription" : "Египетский фунт",
+    "identifier" : "EGP"
+  },
+  {
+    "symbol" : "₹",
+    "localizedDescription" : "Индийская рупия",
+    "identifier" : "INR"
+  },
+  {
+    "symbol" : "LSL",
+    "localizedDescription" : "Лоти Лесото",
+    "identifier" : "LSL"
+  },
+  {
+    "symbol" : "₱",
+    "localizedDescription" : "Филиппинское песо",
+    "identifier" : "PHP"
+  },
+  {
+    "symbol" : "MYR",
+    "localizedDescription" : "Малайзийский ринггит",
+    "identifier" : "MYR"
+  },
+  {
+    "symbol" : "₫",
+    "localizedDescription" : "Вьетнамский донг",
+    "identifier" : "VND"
+  },
+  {
+    "symbol" : "BDT",
+    "localizedDescription" : "Бангладешская така",
+    "identifier" : "BDT"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Мексиканское песо",
+    "identifier" : "MXN"
+  },
+  {
+    "symbol" : "kr",
+    "localizedDescription" : "Норвежская крона",
+    "identifier" : "NOK"
+  },
+  {
+    "symbol" : "JEP",
+    "localizedDescription" : "Джерсийский фунт",
+    "identifier" : "JEP"
+  },
+  {
+    "symbol" : "¥",
+    "localizedDescription" : "Китайский юань",
+    "identifier" : "CNY"
+  },
+  {
+    "symbol" : "£",
+    "localizedDescription" : "Британский фунт стерлингов",
+    "identifier" : "GBP"
+  },
+  {
+    "symbol" : "AED",
+    "localizedDescription" : "Дирхам ОАЭ",
+    "identifier" : "AED"
+  },
+  {
+    "symbol" : "F CFA",
+    "localizedDescription" : "Западноафриканский франк КФА",
+    "identifier" : "XOF"
+  },
+  {
+    "symbol" : "ТМТ",
+    "localizedDescription" : "Туркменский манат",
+    "identifier" : "TMT"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Гонконгский доллар",
+    "identifier" : "HKD"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Австралийский доллар",
+    "identifier" : "AUD"
+  },
+  {
+    "symbol" : "UGX",
+    "localizedDescription" : "Угандийский шиллинг",
+    "identifier" : "UGX"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Новозеландский доллар",
+    "identifier" : "NZD"
+  },
+  {
+    "symbol" : "GHS",
+    "localizedDescription" : "Ганский седи",
+    "identifier" : "GHS"
+  },
+  {
+    "symbol" : "ARS",
+    "localizedDescription" : "Аргентинское песо",
+    "identifier" : "ARS"
+  },
+  {
+    "symbol" : "zł",
+    "localizedDescription" : "Польские злотые",
+    "identifier" : "PLN"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Доллар США",
+    "identifier" : "USD"
+  },
+  {
+    "symbol" : "€",
+    "localizedDescription" : "Евро",
+    "identifier" : "EUR"
+  },
+  {
+    "symbol" : "KES",
+    "localizedDescription" : "Кенийский шиллинг",
+    "identifier" : "KES"
+  },
+  {
+    "symbol" : "SGD",
+    "localizedDescription" : "Сингапурский доллар",
+    "identifier" : "SGD"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Канадский доллар",
+    "identifier" : "CAD"
+  },
+  {
+    "symbol" : "GGP",
+    "localizedDescription" : "Фунт Гернси",
+    "identifier" : "GGP"
+  },
+  {
+    "symbol" : "CLP",
+    "localizedDescription" : "Чилийское песо",
+    "identifier" : "CLP"
+  },
+  {
+    "symbol" : "Rp",
+    "localizedDescription" : "Индонезийская рупия",
+    "identifier" : "IDR"
+  },
+  {
+    "symbol" : "BND",
+    "localizedDescription" : "Брунейский доллар",
+    "identifier" : "BND"
+  },
+  {
+    "symbol" : "LKR",
+    "localizedDescription" : "Шри-ланкийская рупия",
+    "identifier" : "LKR"
+  },
+  {
+    "symbol" : "฿",
+    "localizedDescription" : "Тайский бат",
+    "identifier" : "THB"
+  },
+  {
+    "symbol" : "PKR",
+    "localizedDescription" : "Пакистанская рупия",
+    "identifier" : "PKR"
+  },
+  {
+    "symbol" : "DKK",
+    "localizedDescription" : "Датская крона",
+    "identifier" : "DKK"
+  },
+  {
+    "symbol" : "NGN",
+    "localizedDescription" : "Нигерийская найра",
+    "identifier" : "NGN"
+  },
+  {
+    "symbol" : "kn",
+    "localizedDescription" : "Хорватская куна",
+    "identifier" : "HRK"
+  },
+  {
+    "symbol" : "CRC",
+    "localizedDescription" : "Коста-риканский колон",
+    "identifier" : "CRC"
+  },
+  {
+    "symbol" : "CHF",
+    "localizedDescription" : "Швейцарский франк",
+    "identifier" : "CHF"
+  },
+  {
+    "symbol" : "LAK",
+    "localizedDescription" : "Лаосский кип",
+    "identifier" : "LAK"
+  },
+  {
+    "symbol" : "₽",
+    "localizedDescription" : "Российский рубль",
+    "identifier" : "RUB"
+  },
+  {
+    "symbol" : "MAD",
+    "localizedDescription" : "Марокканский дирхам",
+    "identifier" : "MAD"
+  },
+  {
+    "symbol" : "PEN",
+    "localizedDescription" : "Перуанский новый соль",
+    "identifier" : "PEN"
+  },
+  {
+    "symbol" : "$",
+    "localizedDescription" : "Бразильский реал",
+    "identifier" : "BRL"
+  },
+  {
+    "symbol" : "Skr",
+    "localizedDescription" : "Шведская крона",
+    "identifier" : "SEK"
+  },
+  {
+    "symbol" : "NPR",
+    "localizedDescription" : "Непальская рупия",
+    "identifier" : "NPR"
+  },
+  {
+    "symbol" : "¥",
+    "localizedDescription" : "Японская иена",
+    "identifier" : "JPY"
+  },
+  {
+    "symbol" : "RON",
+    "localizedDescription" : "Румынский лей",
+    "identifier" : "RON"
+  },
+  {
+    "symbol" : "FJD",
+    "localizedDescription" : "Фиджийский доллар",
+    "identifier" : "FJD"
+  },
+  {
+    "symbol" : "₪",
+    "localizedDescription" : "Новый израильский шекель",
+    "identifier" : "ILS"
+  },
+  {
+    "symbol" : "₺",
+    "localizedDescription" : "Турецкая лира",
+    "identifier" : "TRY"
+  },
+  {
+    "symbol" : "₴",
+    "localizedDescription" : "Украинская гривна",
+    "identifier" : "UAH"
+  },
+  {
+    "symbol" : "лв.",
+    "localizedDescription" : "Болгарский лев",
+    "identifier" : "BGN"
+  },
+  {
+    "symbol" : "₩",
+    "localizedDescription" : "Южнокорейский вон",
+    "identifier" : "KRW"
+  },
+  {
+    "symbol" : "BWP",
+    "localizedDescription" : "Ботсванская пула",
+    "identifier" : "BWP"
+  },
+  {
+    "symbol" : "GEL",
+    "localizedDescription" : "Грузинский лари",
+    "identifier" : "GEL"
+  },
+  {
+    "symbol" : "Ft",
+    "localizedDescription" : "Венгерский форинт",
+    "identifier" : "HUF"
+  },
+  {
+    "symbol" : "CZK",
+    "localizedDescription" : "Чешская крона",
+    "identifier" : "CZK"
+  },
+  {
+    "symbol" : "IMP",
+    "localizedDescription" : "Мэнский фунт",
+    "identifier" : "IMP"
+  },
+  {
+    "symbol" : "PAB",
+    "localizedDescription" : "Панамский бальбоа",
+    "identifier" : "PAB"
+  }
+]
