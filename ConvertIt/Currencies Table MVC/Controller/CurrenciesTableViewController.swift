@@ -340,7 +340,7 @@ extension CurrenciesTableViewController: UITableViewDelegate {
 }
 
 
-//MARK: Error handling
+//MARK: - Error handling
 extension CurrenciesTableViewController {
     
     private func handle(apiError: ExchangeRatesDataAPIError) {

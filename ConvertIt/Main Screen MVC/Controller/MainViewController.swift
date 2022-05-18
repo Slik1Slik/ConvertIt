@@ -76,8 +76,6 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
-    private let showChartButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
-    
     private let initiateCurrencyDataRequestButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
     
     private let cancelTaskButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
@@ -91,9 +89,7 @@ class MainViewController: UIViewController {
     private let contentInset: CGFloat = 30
     private let groupedContentInset: CGFloat = 20
     
-    //private let api: ExchangeRatesAPI = ExchangeRatesDataAPI()
-
-    private let api: ExchangeRatesAPI = MockExchangeRatesAPI()
+    private let api: ExchangeRatesAPI = ExchangeRatesDataAPI()
     
     private var query: ParsedExchangeRatesDataQuery = ParsedExchangeRatesDataQuery()
     private var response: ParsedExchangeRatesDataResponse = ParsedExchangeRatesDataResponse()
@@ -139,7 +135,6 @@ class MainViewController: UIViewController {
         setUpTextField()
         
         setUpInitiateCurrencyDataRequestButton()
-        setUpShowChartButton()
         setUpCancelTaskButton()
         
         setUpOutputControlsHStack()
@@ -176,7 +171,7 @@ class MainViewController: UIViewController {
     }
 }
 
-//MARK: Status bar
+//MARK: - Status bar
 extension MainViewController {
     private func updateStatusBar() {
         if isDataTaskProcessing {
@@ -187,7 +182,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Currency Buttons
+//MARK: - Currency Buttons
 extension MainViewController {
     
     private func setUpPickCurrencyFromButton() {
@@ -238,7 +233,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Amount Text Field
+//MARK: - Amount Text Field
 extension MainViewController {
     
     private func setUpTextField() {
@@ -272,7 +267,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Output controls
+//MARK: - Output controls
 extension MainViewController {
     
     private func setUpOutputControlsHStack() {
@@ -282,11 +277,6 @@ extension MainViewController {
         } else {
             outputControlsHStack.addArrangedSubview(initiateCurrencyDataRequestButton)
         }
-    }
-    
-    private func setUpShowChartButton() {
-        showChartButton.configure(imageName: "chart.line.uptrend.xyaxis.circle.fill")
-        showChartButton.addTarget(self, action: #selector(showChartButtonTapped), for: .touchUpInside)
     }
     
     @objc private func showChartButtonTapped(_ sender: Any) {
@@ -335,7 +325,7 @@ extension MainViewController {
     }
 }
 
-//MARK: System appereance controls
+//MARK: - System appereance controls
 extension MainViewController {
     
     private func setUpChangeSystemAppereanceButton() {
@@ -444,7 +434,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Constraints
+//MARK: - Constraints
 extension MainViewController {
     
     private func setUpStatusBarConstraints() {
@@ -559,7 +549,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Amount text field input check
+//MARK: - Amount text field input check
 extension MainViewController {
     
     @objc private func amountTextFieldValueDidChange() {
@@ -575,7 +565,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Text field paste delegate
+//MARK: - Text field paste delegate
 extension MainViewController: UITextPasteDelegate {
     func textPasteConfigurationSupporting(_ textPasteConfigurationSupporting: UITextPasteConfigurationSupporting, performPasteOf attributedString: NSAttributedString, to textRange: UITextRange) -> UITextRange {
         
@@ -616,7 +606,7 @@ extension MainViewController: UITextPasteDelegate {
     }
 }
 
-//MARK: Network
+//MARK: - Network
 extension MainViewController {
     
     private func observeInternetConnectionChanges() {
@@ -658,7 +648,7 @@ extension MainViewController {
     }
 }
 
-//MARK: API - Controller - View
+//MARK: - API - Controller - View
 extension MainViewController {
     
     private func initiateDataRequest() {
@@ -763,7 +753,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Error handling
+//MARK: - Error handling
 extension MainViewController {
     
     private func handle(apiError: ExchangeRatesDataAPIError) {
@@ -836,7 +826,7 @@ extension MainViewController {
     }
 }
 
-//MARK: Alert messages
+//MARK: - Alert messages
 extension MainViewController {
     
     private func presentErrorMessageAlert(title: String, message: String, onRetry: (() -> ())?) {
