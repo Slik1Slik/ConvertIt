@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5601182B282A8604005807A0 /* CurrencyPopularityRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5601182A282A8604005807A0 /* CurrencyPopularityRating.swift */; };
+		562C212D284934A5002031E6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 562C212C284934A5002031E6 /* README.md */; };
 		5699554128281E2200443996 /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699554028281E2200443996 /* CurrencyLabel.swift */; };
 		5699554328295FD600443996 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699554228295FD600443996 /* UserSettings.swift */; };
 		569955462829668B00443996 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569955452829668B00443996 /* UserDataManager.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		5601182A282A8604005807A0 /* CurrencyPopularityRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPopularityRating.swift; sourceTree = "<group>"; };
+		562C212C284934A5002031E6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		5699554028281E2200443996 /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
 		5699554228295FD600443996 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		569955452829668B00443996 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 		56A8798E281D85F200F90F12 = {
 			isa = PBXGroup;
 			children = (
+				562C212C284934A5002031E6 /* README.md */,
 				56DBE8A42833BABC00AC4929 /* Localizable.strings */,
 				56A87999281D85F200F90F12 /* ConvertIt */,
 				56D0689728343A2F00E589EF /* ConvertItTests */,
@@ -534,6 +537,7 @@
 			files = (
 				56A879A7281D85F300F90F12 /* LaunchScreen.storyboard in Resources */,
 				56A879BB281E86D100F90F12 /* ResponseTest.json in Resources */,
+				562C212D284934A5002031E6 /* README.md in Resources */,
 				56DBE867282C004300AC4929 /* Currencies.json in Resources */,
 				56DBE863282BE95400AC4929 /* DefaultCurrencyPopularityRating.json in Resources */,
 				56DBE8A22833BABC00AC4929 /* Localizable.strings in Resources */,
