@@ -16,6 +16,12 @@ protocol ExchangeRatesAPI {
                             toCurrencyAtCode currencyToCode: String,
                             completion: @escaping (Result<Data, ExchangeRatesDataAPIError>) -> Void) -> Void
     
+    func historicalRates(between startDate: Date,
+                         and endDate: Date,
+                         currencyFromCode: String,
+                         currencyToCode: String,
+                         completion: @escaping (DataTaskResult) -> Void)
+    
     func fetch(completion: @escaping (Result<Data, ExchangeRatesDataAPIError>) -> Void)
     
     func cancelCurrentTask()

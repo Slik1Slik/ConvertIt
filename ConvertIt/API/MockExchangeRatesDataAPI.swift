@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class MockExchangeRatesAPI: ExchangeRatesAPI {
+final class MockExchangeRatesDataAPI: ExchangeRatesAPI {
     
     typealias DataTaskResult = Result<Data, ExchangeRatesDataAPIError>
     
@@ -27,21 +27,25 @@ final class MockExchangeRatesAPI: ExchangeRatesAPI {
         }
     }
     
+    func historicalRates(between startDate: Date, and endDate: Date, currencyFromCode: String, currencyToCode: String, completion: @escaping (DataTaskResult) -> Void) {
+        
+        DispatchQueue.global().async {
+            let url = AppDirectoryURLs.getFullPath(forFileName: "TimeseriesResponse.json",
+                                                   inDirectory: .documents)
+            guard let timeseriesResponseData = try? AppFileManager.readFile(at: url) else {
+                completion(.failure(.notFound))
+                return
+            }
+            completion(.success(timeseriesResponseData))
+        }
+    }
+    
     func fetch(completion: @escaping (DataTaskResult) -> Void) {
         
     }
     
     func cancelCurrentTask() {
         currentTask?.cancel()
-    }
-    
-    private func createURL(scheme: String, host: String, path: String) -> URL? {
-        var components = URLComponents()
-        components.scheme = scheme
-        components.host = host
-        components.path = path
-        
-        return components.url
     }
 }
 

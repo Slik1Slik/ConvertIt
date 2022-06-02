@@ -9,9 +9,9 @@ import Foundation
 
 class ExchangeRatesDataQueryParser: ExchangeRatesDataQueryParserProtocol {
     
-    typealias ParsingResult = Result<ParsedExchangeRatesDataQuery, ExchangeRatesDataParserError>
+    typealias ParsingResult = Result<ParsedExchangeRatesConversionResultQuery, ExchangeRatesDataParserError>
     
-    static func parse(_ query: ExchangeRatesDataResponseQuery, completion: (ParsingResult) -> ()) {
+    static func parse(_ query: ExchangeRatesConversionResultResponseQuery, completion: (ParsingResult) -> ()) {
         
         guard let currencyFrom = UserDataManager.shared.currencies.first(where: { $0.identifier == query.from }),
               let currencyTo = UserDataManager.shared.currencies.first(where: { $0.identifier == query.to }) else
@@ -22,7 +22,7 @@ class ExchangeRatesDataQueryParser: ExchangeRatesDataQueryParserProtocol {
         
         completion(
             .success(
-                ParsedExchangeRatesDataQuery(currencyFrom: currencyFrom,
+                ParsedExchangeRatesConversionResultQuery(currencyFrom: currencyFrom,
                                              currencyTo: currencyTo,
                                              amount: query.amount)
             ))
@@ -42,13 +42,13 @@ enum ExchangeRatesDataParserError: Error {
 
 protocol ExchangeRatesDataQueryParserProtocol {
     
-    typealias ParsingResult = Result<ParsedExchangeRatesDataQuery, ExchangeRatesDataParserError>
+    typealias ParsingResult = Result<ParsedExchangeRatesConversionResultQuery, ExchangeRatesDataParserError>
     
-    static func parse(_ query: ExchangeRatesDataResponseQuery, completion: (ParsingResult) -> ())
+    static func parse(_ query: ExchangeRatesConversionResultResponseQuery, completion: (ParsingResult) -> ())
 }
 
 class MockExchangeRatesDataQueryParser: ExchangeRatesDataQueryParserProtocol {
-    static func parse(_ query: ExchangeRatesDataResponseQuery, completion: (ParsingResult) -> ()) {
+    static func parse(_ query: ExchangeRatesConversionResultResponseQuery, completion: (ParsingResult) -> ()) {
         let currencies = [
             Currency(identifier: "USD", symbol: "", localizedDescription: ""),
             Currency(identifier: "EUR", symbol: "", localizedDescription: "")
@@ -56,7 +56,7 @@ class MockExchangeRatesDataQueryParser: ExchangeRatesDataQueryParserProtocol {
         if let currencyFrom = currencies.first(where: { $0.identifier == query.from }),
            let currencyTo = currencies.first(where: { $0.identifier == query.to }) {
             completion(.success(
-                ParsedExchangeRatesDataQuery(currencyFrom: currencyFrom,
+                ParsedExchangeRatesConversionResultQuery(currencyFrom: currencyFrom,
                                              currencyTo: currencyTo,
                                              amount: query.amount)
             ))

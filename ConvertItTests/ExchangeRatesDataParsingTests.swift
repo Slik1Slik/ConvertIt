@@ -22,7 +22,7 @@ class ExchangeRatesDataParsingTests: XCTestCase {
 
     func testExchangeRatesDataQueryParserForIncorrectValue() throws {
         //Given
-        let value = ExchangeRatesDataResponseQuery(amount: 0, from: "", to: "")
+        let value = ExchangeRatesConversionResultResponseQuery(amount: 0, from: "", to: "")
         let expectedResult: ExchangeRatesDataQueryParserProtocol.ParsingResult = .failure(.incorrectDataFormat)
         var actualResult: ExchangeRatesDataQueryParserProtocol.ParsingResult?
         
@@ -37,7 +37,7 @@ class ExchangeRatesDataParsingTests: XCTestCase {
     
     func testExchangeRatesDataQueryParserForCorrectValue() throws {
         //Given
-        let value = ExchangeRatesDataResponseQuery(amount: 0, from: "USD", to: "EUR")
+        let value = ExchangeRatesConversionResultResponseQuery(amount: 0, from: "USD", to: "EUR")
         
         let currencyFromInput = Currency(identifier: "USD",
                                     symbol: "",

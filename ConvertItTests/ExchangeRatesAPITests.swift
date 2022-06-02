@@ -14,7 +14,7 @@ class ExchangeRatesAPITests: XCTestCase {
 
     override func setUpWithError() throws {
         
-        self.api = MockExchangeRatesAPI()
+        self.api = MockExchangeRatesDataAPI()
     }
 
     override func tearDownWithError() throws {

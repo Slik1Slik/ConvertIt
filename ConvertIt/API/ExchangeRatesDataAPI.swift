@@ -16,44 +16,58 @@ final class ExchangeRatesDataAPI: ExchangeRatesAPI {
     private let apiKey: String = "s0U3JDi0d032zOYya8IpBJYW4t2RjUNG"
     
     func resultOfConverting(amount: Double, ofCurrencyAtCode currencyFromCode: String, toCurrencyAtCode currencyToCode: String, completion: @escaping (DataTaskResult) -> Void) -> Void {
-        //let semaphore = DispatchSemaphore(value: 0)
         
-        guard let url = createURL(currencyFrom: currencyFromCode, currencyTo: currencyToCode, amount: amount) else {
+        let queryItems = [
+            URLQueryItem(name: "to", value: currencyToCode),
+            URLQueryItem(name: "from", value: currencyFromCode),
+            URLQueryItem(name: "amount", value: amount.description)
+        ]
+        
+        guard let url = createURL(path: "/exchangerates_data/convert",
+                                  queryItems: queryItems)
+        else {
             completion(.failure(ExchangeRatesDataAPIError.failedToCreateURL))
             return
         }
         
-        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        let request = createURLRequest(for: url)
         
-        request.httpMethod = "GET"
-        
-        request.addValue(apiKey, forHTTPHeaderField: "apikey")
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let response = response, let httpResponse = response as? HTTPURLResponse else {
-                if let error = error {
-                    completion(.failure(ExchangeRatesDataAPIError.unknownServersideError(error)))
-                } else if (response as? HTTPURLResponse) == nil {
-                    completion(.failure(ExchangeRatesDataAPIError.notHTTPResponse))
-                } else {
-                    completion(.failure(.unknownError))
-                }
-                return
-            }
-            guard (200...299).contains(httpResponse.statusCode) else {
-                completion(.failure(ExchangeRatesDataAPIError.errorFor(statusCode: httpResponse.statusCode)))
-                return
-            }
-            guard let data = data, data != Data() else {
-                completion(.failure(ExchangeRatesDataAPIError.unknownError))
-                return
-            }
-            completion(.success(data))
-            //semaphore.signal()
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            self?.handleDataTaskResult(data: data,
+                                       response: response,
+                                       error: error,
+                                       completion: completion)
         }
         currentTask = task
         currentTask!.resume()
-        //semaphore.wait()
+    }
+    
+    func historicalRates(between startDate: Date, and endDate: Date, currencyFromCode: String, currencyToCode: String, completion: @escaping (DataTaskResult) -> Void) {
+        
+        let queryItems = [
+            URLQueryItem(name: "start_date", value: startDate.string(format: DateConstants.dateFormat)),
+            URLQueryItem(name: "end_date", value: endDate.string(format: DateConstants.dateFormat)),
+            URLQueryItem(name: "base", value: currencyFromCode),
+            URLQueryItem(name: "symbols", value: currencyToCode),
+        ]
+        
+        guard let url = createURL(path: "/exchangerates_data/timeseries",
+                                  queryItems: queryItems)
+        else {
+            completion(.failure(ExchangeRatesDataAPIError.failedToCreateURL))
+            return
+        }
+        
+        let request = createURLRequest(for: url)
+        
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            self?.handleDataTaskResult(data: data,
+                                       response: response,
+                                       error: error,
+                                       completion: completion)
+        }
+        currentTask = task
+        currentTask!.resume()
     }
     
     func fetch(completion: @escaping (DataTaskResult) -> Void) {
@@ -67,18 +81,52 @@ final class ExchangeRatesDataAPI: ExchangeRatesAPI {
 
 extension ExchangeRatesDataAPI {
     
-    private func createURL(currencyFrom: String, currencyTo: String, amount: Double) -> URL? {
+    private func createURL(path: String, queryItems: [URLQueryItem]) -> URL? {
+        
         var components = URLComponents()
+        
         components.scheme = "https"
         components.host = "api.apilayer.com"
-        components.path = "/exchangerates_data/convert"
-        components.queryItems = [
-            URLQueryItem(name: "to", value: currencyTo),
-            URLQueryItem(name: "from", value: currencyFrom),
-            URLQueryItem(name: "amount", value: amount.description)
-        ]
+        components.path = path
+        components.queryItems = queryItems
         
         return components.url
+    }
+    
+    private func createURLRequest(for url: URL) -> URLRequest {
+        
+        var request = URLRequest(url: url, timeoutInterval: Double.infinity)
+        
+        request.httpMethod = "GET"
+        
+        request.addValue(apiKey, forHTTPHeaderField: "apikey")
+        
+        return request
+    }
+}
+
+extension ExchangeRatesDataAPI {
+    
+    private func handleDataTaskResult(data: Data?, response: URLResponse?, error: Error?, completion: @escaping (DataTaskResult) -> Void) {
+        guard let response = response, let httpResponse = response as? HTTPURLResponse else {
+            if let error = error {
+                completion(.failure(ExchangeRatesDataAPIError.unknownServersideError(error)))
+            } else if (response as? HTTPURLResponse) == nil {
+                completion(.failure(ExchangeRatesDataAPIError.notHTTPResponse))
+            } else {
+                completion(.failure(.unknownError))
+            }
+            return
+        }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            completion(.failure(ExchangeRatesDataAPIError.errorFor(statusCode: httpResponse.statusCode)))
+            return
+        }
+        guard let data = data, data != Data() else {
+            completion(.failure(ExchangeRatesDataAPIError.unknownError))
+            return
+        }
+        completion(.success(data))
     }
 }
 

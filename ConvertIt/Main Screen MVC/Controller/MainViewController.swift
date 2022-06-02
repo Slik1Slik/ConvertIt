@@ -77,6 +77,7 @@ class MainViewController: UIViewController {
     }()
     
     private let initiateCurrencyDataRequestButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
+    private let showChartButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
     
     private let cancelTaskButton: DefaultApplicationButton = DefaultApplicationButton(style: .regular)
     
@@ -89,10 +90,10 @@ class MainViewController: UIViewController {
     private let contentInset: CGFloat = 30
     private let groupedContentInset: CGFloat = 20
     
-    private let api: ExchangeRatesAPI = ExchangeRatesDataAPI()
+    private let api: ExchangeRatesAPI = MockExchangeRatesDataAPI()
     
-    private var query: ParsedExchangeRatesDataQuery = ParsedExchangeRatesDataQuery()
-    private var response: ParsedExchangeRatesDataResponse = ParsedExchangeRatesDataResponse()
+    private var query: ParsedExchangeRatesConversionResultQuery = ParsedExchangeRatesConversionResultQuery()
+    private var response: ParsedExchangeRatesConversionResultResponse = ParsedExchangeRatesConversionResultResponse()
     
     private var amountTextValue: String = "" {
         didSet {
@@ -135,6 +136,7 @@ class MainViewController: UIViewController {
         setUpTextField()
         
         setUpInitiateCurrencyDataRequestButton()
+        setUpShowChartButton()
         setUpCancelTaskButton()
         
         setUpOutputControlsHStack()
@@ -271,16 +273,12 @@ extension MainViewController {
 extension MainViewController {
     
     private func setUpOutputControlsHStack() {
-        //outputControlsHStack.addArrangedSubview(showChartButton)
+        outputControlsHStack.addArrangedSubview(showChartButton)
         if isDataTaskProcessing {
             outputControlsHStack.addArrangedSubview(cancelTaskButton)
         } else {
             outputControlsHStack.addArrangedSubview(initiateCurrencyDataRequestButton)
         }
-    }
-    
-    @objc private func showChartButtonTapped(_ sender: Any) {
-        
     }
     
     private func setUpInitiateCurrencyDataRequestButton() {
@@ -293,6 +291,29 @@ extension MainViewController {
             return
         }
         initiateDataRequest()
+    }
+    
+    private func setUpShowChartButton() {
+        showChartButton.configure(imageName: "chart.line.uptrend.xyaxis.circle.fill")
+        showChartButton.addTarget(self, action: #selector(showChartButtonTapped(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func showChartButtonTapped(_ sender: Any) {
+        
+        let url = AppDirectoryURLs.getFullPath(forFileName: "TimeseriesResponse.json", inDirectory: .documents)
+        let response = try! JSONManager.read(for: ExchangeRatesTimeseriesResultResponse.self, from: url)
+        var rates: [DailyExchangeRate] = []
+        ExchangeRatesTimeseriesResultResponseParser.parse(response) { result in
+            switch result {
+            case .success(let parsedResponse):
+                rates = parsedResponse.rates
+            case .failure(_):
+                return
+            }
+        }
+        let vc = ExchangeRatesChartViewController(rates: rates)
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
     
     private func setUpCancelTaskButton() {
@@ -469,13 +490,11 @@ extension MainViewController {
     private func setUpSwapCurrenciesButtonConstraints() {
         swapCurrenciesButton.translatesAutoresizingMaskIntoConstraints = false
         
-        let leftAnchorConstant = view.frame.width - padding - groupedContentInset - ApplicationButtonStyle.regular.pointSize
         let rightAnchorConstant = padding + groupedContentInset
         
         NSLayoutConstraint.activate([
             swapCurrenciesButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -rightAnchorConstant),
             swapCurrenciesButton.heightAnchor.constraint(equalToConstant: ApplicationButtonStyle.regular.pointSize),
-            swapCurrenciesButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: leftAnchorConstant),
             swapCurrenciesButton.centerYAnchor.constraint(equalTo: pickCurrencyFromButtton.bottomAnchor, constant: groupedContentInset / 2)
         ])
     }
@@ -662,7 +681,7 @@ extension MainViewController {
                     UINotificationFeedbackGenerator().notificationOccurred(.error)
                     self.handle(apiError: error)
                 case .success(let data):
-                    JSONManager.read(for: ExchangeRatesDataResponse.self, from: data) { [unowned self] decodingResult in
+                    JSONManager.read(for: ExchangeRatesConversionResultResponse.self, from: data) { [unowned self] decodingResult in
                         switch decodingResult {
                         case .success(let response):
                             ExchangeRatesDataResponseParser.parse(response) { parsingResult in

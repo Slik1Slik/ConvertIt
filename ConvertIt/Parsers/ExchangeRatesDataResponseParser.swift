@@ -9,14 +9,14 @@ import Foundation
 
 class ExchangeRatesDataResponseParser: ExchangeRatesDataResponseParserProtocol {
     
-    typealias ParsingResult = Result<ParsedExchangeRatesDataResponse, ExchangeRatesDataParserError>
+    typealias ParsingResult = Result<ParsedExchangeRatesConversionResultResponse, ExchangeRatesDataParserError>
     
-    static func parse(_ response: ExchangeRatesDataResponse, completion: (ParsingResult) -> ()) {
+    static func parse(_ response: ExchangeRatesConversionResultResponse, completion: (ParsingResult) -> ()) {
         ExchangeRatesDataQueryParser.parse(response.query) { result in
             switch result {
             case .success(let query):
                 completion(
-                    .success(ParsedExchangeRatesDataResponse(date: response.date,
+                    .success(ParsedExchangeRatesConversionResultResponse(date: response.date,
                                                              timestamp: response.info.timestamp,
                                                              query: query,
                                                              result: response.result,
@@ -32,7 +32,7 @@ class ExchangeRatesDataResponseParser: ExchangeRatesDataResponseParserProtocol {
 
 protocol ExchangeRatesDataResponseParserProtocol {
     
-    typealias ParsingResult = Result<ParsedExchangeRatesDataResponse, ExchangeRatesDataParserError>
+    typealias ParsingResult = Result<ParsedExchangeRatesConversionResultResponse, ExchangeRatesDataParserError>
     
-    static func parse(_ response: ExchangeRatesDataResponse, completion: (ParsingResult) -> ())
+    static func parse(_ response: ExchangeRatesConversionResultResponse, completion: (ParsingResult) -> ())
 }

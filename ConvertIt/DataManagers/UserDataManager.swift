@@ -24,17 +24,17 @@ class UserDataManager {
     private let lastExchangeRatesDataResponseFileURL = AppDirectoryURLs.getFullPath(forFileName: "LastResponse.json",
                                                                                            inDirectory: .documents)
     
-    func fetchLastExchangeRatesDataResponse() throws -> ParsedExchangeRatesDataResponse {
+    func fetchLastExchangeRatesDataResponse() throws -> ParsedExchangeRatesConversionResultResponse {
         guard let data = AppFileManager.readFileIfExists(at: lastExchangeRatesDataResponseFileURL) else {
             throw UserDataError.failedToFetchLastExchangeRatesDataResponse
         }
-        guard let response = try? JSONManager.read(for: ParsedExchangeRatesDataResponse.self, from: data) else {
+        guard let response = try? JSONManager.read(for: ParsedExchangeRatesConversionResultResponse.self, from: data) else {
             throw UserDataError.failedToFetchLastExchangeRatesDataResponse
         }
         return response
     }
     
-    func saveExchangeRatesDataResponse(_ response: ParsedExchangeRatesDataResponse) throws {
+    func saveExchangeRatesDataResponse(_ response: ParsedExchangeRatesConversionResultResponse) throws {
         do {
             try JSONManager.write(response, to: lastExchangeRatesDataResponseFileURL)
         } catch {
