@@ -20,6 +20,7 @@ class NetworkService {
     
     private(set) lazy var isConnectionAvailable: Bool = monitor.currentPath.status == .satisfied {
         didSet {
+            guard isConnectionAvailable != oldValue else { return }
             if isPathUpdateInitial {
                 NotificationCenter.default.post(name: Notifications.internetConnectionDidBecomeMonitoredNotification, object: nil)
                 isPathUpdateInitial = false

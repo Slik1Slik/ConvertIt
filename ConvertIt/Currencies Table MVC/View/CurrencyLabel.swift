@@ -9,9 +9,9 @@ import UIKit
 
 class CurrencyLabel: UIView {
     
-    private let currencyIcon: UIImageView = UIImageView()
+    let currencyIcon: UIImageView = UIImageView()
     
-    private let currencyLabel: UILabel = {
+    let currencyLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .left

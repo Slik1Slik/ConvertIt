@@ -58,6 +58,7 @@
 		56F1C9602827D4D1002A28F1 /* CurrenciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1C95F2827D4D1002A28F1 /* CurrenciesTableViewController.swift */; };
 		56F1C9632827D595002A28F1 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1C9622827D595002A28F1 /* CurrencyTableViewCell.swift */; };
 		56F1C96528280090002A28F1 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F1C96428280090002A28F1 /* CustomSegmentedControl.swift */; };
+		56F7E3F32839A157004EB6D4 /* CurrenciesTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F7E3F22839A157004EB6D4 /* CurrenciesTableViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +136,7 @@
 		56F1C95F2827D4D1002A28F1 /* CurrenciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewController.swift; sourceTree = "<group>"; };
 		56F1C9622827D595002A28F1 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		56F1C96428280090002A28F1 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		56F7E3F22839A157004EB6D4 /* CurrenciesTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenciesTableViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,6 +376,7 @@
 				56D0689828343A2F00E589EF /* CurrencyAmountInputCheckTests.swift */,
 				56D068AA2834F65100E589EF /* ExchangeRatesAPITests.swift */,
 				56D068AC2834F87500E589EF /* ExchangeRatesDataParsingTests.swift */,
+				56F7E3F22839A157004EB6D4 /* CurrenciesTableViewControllerTests.swift */,
 			);
 			path = ConvertItTests;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56F7E3F32839A157004EB6D4 /* CurrenciesTableViewControllerTests.swift in Sources */,
 				56D068AD2834F87500E589EF /* ExchangeRatesDataParsingTests.swift in Sources */,
 				56D0689928343A2F00E589EF /* CurrencyAmountInputCheckTests.swift in Sources */,
 				56D068AB2834F65100E589EF /* ExchangeRatesAPITests.swift in Sources */,

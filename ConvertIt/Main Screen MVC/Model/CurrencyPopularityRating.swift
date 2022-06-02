@@ -10,9 +10,4 @@ import Foundation
 struct CurrencyPopularityRating: Codable {
     var id: String = ""
     var popularity: Int = 0
-    
-    init(id: String, popularity: Int) {
-        self.id = id
-        self.popularity = popularity
-    }
 }

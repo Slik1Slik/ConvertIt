@@ -28,26 +28,27 @@ class CurrenciesTableViewController: UIViewController {
     
     private let padding: CGFloat = 20
     
-    private let tableView = UITableView()
+    let tableView = UITableView()
     
-    private let header: UIView = UIView()
+    let header: UIView = UIView()
     
-    private let currencySegmentedControl: CustomSegmentedControl = CustomSegmentedControl()
+    let currencySegmentedControl: CustomSegmentedControl = CustomSegmentedControl()
     
-    private let searchTextField: UITextField = UITextField()
+    let searchTextField: UITextField = UITextField()
     
-    private var currencies: [Currency] = []
+    var currencies: [Currency] = []
+    var currenciesPopularityRating: [CurrencyPopularityRating] = []
     
-    private var currentCurrenciesDataSource: [Currency] = []
+    var currentCurrenciesDataSource: [Currency] = []
     
-    private var searchText: String = "" {
+    var searchText: String = "" {
         didSet {
             initiateSearch()
             searchTextField.rightViewMode = searchText.isEmpty ? .never : .always
         }
     }
     
-    private var lastSearchInputValues = (CurrencyFrom: "", CurrencyTo: "")
+    var lastSearchInputValues = (CurrencyFrom: "", CurrencyTo: "")
     
     init(selection: CurrenciesTableViewSelection = .from, currencyFrom: Currency, currencyTo: Currency) {
         super.init(nibName: nil, bundle: nil)
@@ -55,6 +56,10 @@ class CurrenciesTableViewController: UIViewController {
         self.selection = selection
         self.currencyFrom = currencyFrom
         self.currencyTo = currencyTo
+    }
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -76,6 +81,7 @@ class CurrenciesTableViewController: UIViewController {
         configureCell()
         
         fetchCurrencies()
+        fetchCurrencyPopularityRating()
         sortCurrencies()
         filterCurrencies()
     }
@@ -211,9 +217,16 @@ class CurrenciesTableViewController: UIViewController {
         self.currencies = UserDataManager.shared.currencies
     }
     
+    private func fetchCurrencyPopularityRating() {
+        guard let rating = try? UserDataManager.shared.fetchCurrencyPopularityRating() else {
+            return
+        }
+        self.currenciesPopularityRating = rating
+    }
+    
     private func sortCurrencies() {
         currencies.sort { $0.identifier < $1.identifier }
-        guard let currenciesPopularityRating = try? UserDataManager.shared.fetchCurrencyPopularityRating() else {
+        guard !currenciesPopularityRating.isEmpty else {
             return
         }
         let popularityRatingDict = Dictionary(uniqueKeysWithValues: currenciesPopularityRating.map { ($0.id, $0.popularity) })
@@ -336,56 +349,6 @@ extension CurrenciesTableViewController: UITableViewDelegate {
         self.view.hideKeyboard()
         updateCurrencySegmentedControl()
         tableView.reloadData()
-    }
-}
-
-
-//MARK: - Error handling
-extension CurrenciesTableViewController {
-    
-    private func handle(apiError: ExchangeRatesDataAPIError) {
-    }
-    
-    private func handle(urlError: URLError) {
-        guard urlError.urlErrorCode != .cancelled else { return }
-        presentErrorMessageAlert(title: "Ошибка",
-                                 message: NSLocalizedString(urlError.urlErrorCode.localizedStringKey, comment: ""))
-        {
-            
-        }
-    }
-    
-    private func handle(decodingError: JSONManager.JSONManagerError) {
-        presentErrorMessageAlert(title: "Ошибка",
-                                 message: decodingError.localizedDescription,
-                                 onRetry: nil)
-    }
-    
-    private func handle(anyError: Error) {
-        presentErrorMessageAlert(title: "Ошибка",
-                                 message: anyError.localizedDescription,
-                                 onRetry: nil)
-    }
-}
-
-//MARK: Alert messages
-extension CurrenciesTableViewController {
-    
-    private func presentErrorMessageAlert(title: String, message: String, onRetry: (() -> ())?) {
-        let alert = UIAlertController(title: title,
-                                      message: message,
-                                      preferredStyle: UIAlertController.Style.alert)
-        
-        if let onRetry = onRetry, NetworkService.shared.isConnectionAvailable {
-            alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
-            alert.addAction(UIAlertAction(title: "Попробовать еще раз", style: .default, handler: { _ in
-                onRetry()
-            }))
-        } else {
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-        }
-        
-        self.present(alert, animated: true, completion: nil)
     }
 }
 
