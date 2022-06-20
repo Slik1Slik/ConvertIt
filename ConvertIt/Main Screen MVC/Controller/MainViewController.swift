@@ -300,8 +300,8 @@ extension MainViewController {
     
     @objc private func showChartButtonTapped(_ sender: Any) {
         
-        let url = AppDirectoryURLs.getFullPath(forFileName: "TimeseriesResponse.json", inDirectory: .documents)
-        let response = try! JSONManager.read(for: ExchangeRatesTimeseriesResultResponse.self, from: url)
+        let data = try! AppFileManager.loadBundledContent(fromFileNamed: "TimeseriesResponse", withExtension: "json")
+        let response = try! JSONManager.read(for: ExchangeRatesTimeseriesResultResponse.self, from: data)
         var rates: [DailyExchangeRate] = []
         ExchangeRatesTimeseriesResultResponseParser.parse(response) { result in
             switch result {

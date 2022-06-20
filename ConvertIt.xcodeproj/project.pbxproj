@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5601182B282A8604005807A0 /* CurrencyPopularityRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5601182A282A8604005807A0 /* CurrencyPopularityRating.swift */; };
+		564337932854E00C001E0BEE /* TimeseriesResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 564337922854E00C001E0BEE /* TimeseriesResponse.json */; };
 		5699554128281E2200443996 /* CurrencyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699554028281E2200443996 /* CurrencyLabel.swift */; };
 		5699554328295FD600443996 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5699554228295FD600443996 /* UserSettings.swift */; };
 		569955462829668B00443996 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569955452829668B00443996 /* UserDataManager.swift */; };
@@ -83,6 +84,7 @@
 
 /* Begin PBXFileReference section */
 		5601182A282A8604005807A0 /* CurrencyPopularityRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPopularityRating.swift; sourceTree = "<group>"; };
+		564337922854E00C001E0BEE /* TimeseriesResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TimeseriesResponse.json; sourceTree = "<group>"; };
 		5699554028281E2200443996 /* CurrencyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabel.swift; sourceTree = "<group>"; };
 		5699554228295FD600443996 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		569955452829668B00443996 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 		569DB02E282023BB00844D49 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				564337922854E00C001E0BEE /* TimeseriesResponse.json */,
 				56A879BA281E86D100F90F12 /* ResponseTest.json */,
 				56DBE866282C004300AC4929 /* Currencies.json */,
 				56A879A3281D85F300F90F12 /* Assets.xcassets */,
@@ -577,6 +580,7 @@
 				56A879BB281E86D100F90F12 /* ResponseTest.json in Resources */,
 				56DBE867282C004300AC4929 /* Currencies.json in Resources */,
 				56DBE863282BE95400AC4929 /* DefaultCurrencyPopularityRating.json in Resources */,
+				564337932854E00C001E0BEE /* TimeseriesResponse.json in Resources */,
 				56DBE8A22833BABC00AC4929 /* Localizable.strings in Resources */,
 				56A879AF281D931B00F90F12 /* Colors.xcassets in Resources */,
 				56A879A4281D85F300F90F12 /* Assets.xcassets in Resources */,
@@ -865,7 +869,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -895,7 +899,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
